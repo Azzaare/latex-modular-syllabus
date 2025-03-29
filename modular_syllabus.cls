@@ -22,9 +22,34 @@
 \RequirePackage{wasysym}
 \RequirePackage{ifsym}
 \RequirePackage{xparse}
+\RequirePackage{booktabs, colortbl, xcolor}
+\RequirePackage{tabularx}
+\RequirePackage{enumitem}
+\RequirePackage{ltablex}
+\RequirePackage{multirow}
+\RequirePackage{lscape}
+\RequirePackage{hyperref}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
+
+%----------------------------------------------------------------------------------------
+%   MISC CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\setlist{nolistsep}
+
+\newcolumntype{r}{>{\hsize=0.9\hsize}X}
+\newcolumntype{w}{>{\hsize=0.6\hsize}X}
+\newcolumntype{m}{>{\hsize=.9\hsize}X}
+
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\arraystretch}{2.0}
+\renewcommand{\bfseries}{\color{gray}} % Make \textbf produce coloured text instead
+
+\pagestyle{empty} % Disable headers and footers
+
+\setlength{\parindent}{0pt} % Disable paragraph indentation
 
 %----------------------------------------------------------------------------------------
 %   COLOURS
@@ -44,16 +69,6 @@
 \newcommand{\setMainColor}[1]{
   \definecolor{myCOLOR}{HTML}{#1}
 }
-
-%----------------------------------------------------------------------------------------
-%   MISC CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-
-\renewcommand{\bfseries}{\color{gray}} % Make \textbf produce coloured text instead
-
-\pagestyle{empty} % Disable headers and footers
-
-\setlength{\parindent}{0pt} % Disable paragraph indentation
 
 %----------------------------------------------------------------------------------------
 %   SIDEBAR DEFINITIONS
@@ -494,5 +509,3 @@
 %----------------------------------------------------------------------------------------
 
 \RequirePackage[left=7.6cm,top=0.1cm,right=1cm,bottom=0.2cm,nohead,nofoot]{geometry}
-
-\RequirePackage{hyperref}
