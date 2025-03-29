@@ -1,89 +1,204 @@
 # Modular LaTeX Syllabus Template
 
-This repository contains a modular LaTeX syllabus template that allows for customization directly from the `.tex` file without needing to modify the class file. This makes it easier to create and maintain syllabus documents with a consistent style but customized content.
+A modern, customizable LaTeX syllabus template with a clean sidebar design and flexible configuration options. This template allows instructors to create professional-looking syllabi without needing to modify the underlying class file.
 
-## Files
+## Credits
 
-- `modular_syllabus.cls`: The class file containing the structure and styling definitions
-- `modular_template.tex`: An example template showing how to use the modular class
-- `template.tex`: The original template (using `inzane_syllabus.cls`)
-- `inzane_syllabus.cls`: The original class file
+This LaTeX class is based on **Inzane Syllabus Template** by Carmine Spagnuolo (cspagnuolo@unisa.it) with major modifications by Zane Wolf (zwolf.mlxvi@gmail.com).
 
-## Key Improvements
+Further modifications for modularity by Jean-François Baffier (jf@baffier.fr).
 
-The modular version offers several advantages over the original:
+This modular version allows for customization directly from the .tex file without needing to modify the class file.
 
-1. **Customization from the .tex file**: All styling and layout options can be set directly in the .tex file
-2. **Flexible TA system**: Add any number of TAs, not just two
-3. **Flexible FAQ system**: Add any number of FAQs, not just four
-4. **Custom sidebar sections**: Add your own sections to the sidebar
-5. **Section visibility control**: Show/hide specific sections as needed
-6. **Icon style customization**: Choose between circle, square, or no icons
-7. **Color and size customization**: Easily change the main color and sidebar width
+## Features
 
-## How to Use
+Note that the README was generated and might have some issues. Please file one if needed.
 
-### Basic Usage
+- **Sidebar design** with customizable width, color, and icon styles
+- **Flexible sections** that can be shown or hidden as needed
+- **No limit** on the number of TAs or FAQ items you can include
+- **Custom sidebar sections** for additional information
+- **Profile picture** for a personalized touch
+- **Color-coded modules** in the class schedule
 
-1. Use `\documentclass[letterpaper]{modular_syllabus}` in your .tex file
-2. Set customization options in the preamble
-3. Add your content
-4. Compile with your LaTeX compiler
+## Getting Started
 
-### Customization Options
+1. Use the `modular_syllabus` class in your document:
+2.
+
+   ```latex
+   \documentclass[letterpaper]{modular_syllabus}
+   ```
+
+3. Configure your styling options
+4. Add your course content
+5. Compile with any standard LaTeX compiler
+
+## Customization Options
+
+### Core Style Options
 
 ```latex
 % Set the main color (HTML color code without #)
-\setMainColor{046D0B} % Green - you can change this to any color you want
+\setMainColor{046D0B}  % Green theme
 
-% Set the sidebar width (default is 9cm)
-\setSidebarWidth{9cm}
+% Set the sidebar width
+\setSidebarWidth{9cm}  % Default is 9cm
 
-% Set the profile image size (default is 5cm)
-\setProfileImageSize{5cm}
+% Set the profile image size
+\setProfileImageSize{5cm}  % Default is 5cm
 
 % Set the icon style (options: circle, square, none)
 \setIconStyle{circle}
-
-% Show/hide sections (default: all shown except About)
-\showInstructorSection
-\showCourseSection
-\showLabSection
-\showTASection
-\showAboutSection % Show the About section
-\hideFAQSection % Hide the FAQ section
 ```
 
-### Adding TAs
+### Section Visibility
+
+Control which sections appear in your syllabus:
 
 ```latex
-% Add as many TAs as needed
+% Show standard sections (these are enabled by default)
+\showInstructorSection
+\showCourseSection
+
+% Hide sections you don't need
+\hideLabSection
+\hideTASection
+
+% Optional sections (disabled by default)
+\showAboutSection  % Adds an "About" section with course description
+```
+
+### Course Information
+
+Set up basic course information:
+
+```latex
+\classname{Fishes}
+\classnum{OEB 177}
+
+% Instructor information
+\profname{Jane Smith}
+\officehours{Office Hrs: Mon \& Wed 1-2p}
+\office{Science Building 105}
+\site{http://university.edu/jsmith}
+\email{jsmith@university.edu}
+
+% Course details
+\prereq{Prereq: Biology 101}
+\classdays{Tues \& Thurs}
+\classhours{11a-12:30p}
+\classloc{Science Center 401}
+
+% Optional lab details
+\labdays{Wed \& Fri}
+\labhours{2-5p}
+\labloc{Lab Building 302}
+```
+
+### Adding Teaching Assistants
+
+Add as many TAs as needed:
+
+```latex
 \addTA{Name}{Office Hours}{Office Location}{Email}
-\addTA{Another TA}{Office Hours}{Office Location}{Email}
+
+% Examples:
+\addTA{Alice Johnson}{Office Hrs: Tues \& Thurs 10-11a}{Science 104}{alice@university.edu}
+\addTA{Bob Smith}{Office Hrs: Wed 1-2p}{Science 106}{bob@university.edu}
+\addTA{Carol Zhang}{Office Hrs: Fri 3-4p}{Science 108}{carol@university.edu}
 ```
 
 ### Adding FAQs
 
+Add frequently asked questions and their answers:
+
 ```latex
-\addFAQ{Question}{Answer}
-\addFAQ{Another Question}{Another Answer}
+\addFAQ{Question text goes here?}{Answer text goes here.}
+
+% Examples:
+\addFAQ{Do we need the textbook for this course?}{Yes, the textbook is required and will be used extensively.}
+\addFAQ{Are laptops allowed in class?}{Yes, but only for note-taking and class activities.}
 ```
 
-### Adding Custom Sidebar Sections
+### Custom Sidebar Sections
+
+Add your own custom sections to the sidebar:
 
 ```latex
 \addSidebarSection{Section Title}{
   \begin{tabular}{p{0.5cm} @{\hskip 0.5cm}p{5cm}}
-    \textsc{\large\iconhalf{\faCalendarO}} & Content Line 1\\
-    \textsc{\large\iconhalf{\faCalendarO}} & Content Line 2\\
+    \textsc{\large\iconhalf{\faCalendarO}} & Important Date 1\\
+    \textsc{\large\iconhalf{\faCalendarO}} & Important Date 2\\
+  \end{tabular}
+}
+
+% Example:
+\addSidebarSection{Important Dates}{
+  \begin{tabular}{p{0.5cm} @{\hskip 0.5cm}p{5cm}}
+    \textsc{\large\iconhalf{\faCalendarO}} & Midterm: Oct 15\\
+    \textsc{\large\iconhalf{\faCalendarO}} & Project Due: Nov 20\\
+    \textsc{\large\iconhalf{\faCalendarO}} & Final Exam: Dec 15\\
   \end{tabular}
 }
 ```
 
-## Backward Compatibility
+### About Section
 
-The modular template maintains backward compatibility with the original template. You can still use the old commands like `\taAname`, `\qOne`, etc., but the new flexible systems are recommended for new documents.
+Add a course description or overview:
 
-## Examples
+```latex
+\about{This course explores the fascinating world of marine biology,
+focusing on ecological relationships and conservation challenges.
+Students will gain hands-on experience through lab work and field trips.}
+```
 
-See `modular_template.tex` for a complete example of how to use all the new features.
+## Page Layout Commands
+
+Use these commands to create different parts of your syllabus:
+
+```latex
+\begin{document}
+
+% Create the main sidebar with course info
+\makeprofile
+
+% Your main content goes here
+\section{Overview}
+Course overview text...
+
+% For FAQ page with sidebar
+\newpage
+\makeSide
+
+% For full-width pages (like schedules)
+\newpage
+\makeFullPage
+\section{Class Schedule}
+Schedule content...
+
+\end{document}
+```
+
+## Formatting Helpers
+
+The template includes several helper environments for consistent formatting:
+
+```latex
+% For grading scheme or simple lists
+\begin{twentyshort}
+  \twentyitemshort{15\%}{Review Paper}
+  \twentyitemshort{15\%}{Lab Worksheets}
+  \twentyitemshort{40\%}{Midterm Exams}
+  \twentyitemshort{30\%}{Final Exam}
+\end{twentyshort}
+
+% For more detailed items with descriptions
+\begin{twenty}
+  \twentyitem{15\%}{Review Paper}{Due Nov 15}{Description of the paper assignment...}
+\end{twenty}
+```
+
+## Example
+
+See `modular_template.tex` for a complete example showing how to use all features of the template.
